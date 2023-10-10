@@ -4,6 +4,8 @@ from settings import *
 from map import *
 from player import *
 from raycasting import *
+from object_renderer import *
+
 
 
 class Game():
@@ -16,8 +18,9 @@ class Game():
 
     def new_game(self):
         self.map = Map(self)                                            #Initialize map class
-        self.player = Player(self)                                      #Initialize player class    
-        self.raycasting = RayCasting(self)                                  #Initialize raycasting in game
+        self.player = Player(self)                                      #Initialize player class  
+        self.object_renderer = ObjectRenderer(self)                     #Initialize texture renderer  
+        self.raycasting = RayCasting(self)                              #Initialize raycasting in game
 
     def update(self):
         self.player.update()                                            #Update player angle and X,y
@@ -28,6 +31,7 @@ class Game():
 
     def draw(self):
         self.screen.fill('black')                                       #black screen
+        self.object_renderer.draw()                                     #Draw obj render
         #self.map.draw()                                                 #draw instance in map class
         #self.player.draw()                                              #draw player
 

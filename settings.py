@@ -22,3 +22,6 @@ FOG = 5 #how bright are the walls distance power realation
 
 SCREEN_DIST = HALF_WIDTH / math.tan(HALF_FOV)
 SCALE = WIDTH // NUM_RAYS
+
+TEXTURE_SIZE = 512
+HALF_TEXTURE_SIZE = TEXTURE_SIZE //2
