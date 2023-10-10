@@ -15,7 +15,7 @@ class Player:
         speed = PLAYER_SPEED * self.game.delta_time
         speed_sin = speed * sin_a
         speed_cos = speed * cos_a
-
+        #WASD Movement
         keys = pg.key.get_pressed()
         if keys[pg.K_w]:
             dx += speed_cos
@@ -30,8 +30,7 @@ class Player:
             dx += -speed_sin
             dy += speed_cos
 
-        self.x += dx
-        self.y += dy
+        self.check_wall_colision(dx, dy)                #call method that allows to check if the next movement will colide with wall
 
         #Angle control with keys
         if keys[pg.K_LEFT]:
@@ -39,6 +38,14 @@ class Player:
         if keys[pg.K_RIGHT]:
             self.angle += PLAYER_ROT_SPEED * self.game.delta_time
         self.angle %= math.tau
+
+    def check_wall(self,x,y):
+        return (x,y) not in self.game.map.world_map
+    def check_wall_colision(self, dx, dy):
+        if self.check_wall(int(self.x + dx), int(self.y + dy)):
+            self.x += dx
+        if self.check_wall(int(self.x + dx), int(self.y + dy)):
+            self.y += dy
     
     def draw(self):
         pg.draw.line(self.game.screen, 'yellow', (self.x * 20, self.y * 20 ),
