@@ -31,18 +31,7 @@ class RayCasting:
                     break
                 x_hor += dx
                 y_hor += dy
-                depth_vert += delta_depth
-
-            if depth_vert < depth_hor:
-                depth = depth_vert
-            else:
-                depth = depth_hor
-
-            #Dreaw raycastingg
-            pg.draw.line(self.game.screen, 'yellow', (20 * ox, 20 * oy),
-                         (20 * ox + 20* depth * cos_a, 20 * oy + 20 * depth *sin_a), 2)
-
-
+                depth_hor += delta_depth
 
             #intersectiuon with vertical grid
             x_vert, dx = (x_map + 1, 1) if cos_a > 0  else (x_map - 1e-6, -1)
@@ -60,6 +49,15 @@ class RayCasting:
                 x_vert += dx
                 y_vert += dy
                 depth_vert += delta_depth
+
+            if depth_vert < depth_hor:
+                depth = depth_vert
+            else:
+                depth = depth_hor
+
+            #Dreaw raycastingg
+            pg.draw.line(self.game.screen, 'yellow', (20 * ox, 20 * oy),
+                         (20 * ox + 20* depth * cos_a, 20 * oy + 20 * depth *sin_a), 2)
 
             ray_angle +=  DELTA_ANGLE
 
