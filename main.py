@@ -2,31 +2,32 @@ import pygame as pg
 import sys
 from settings import *
 from map import *
+from player import *
 
 
 class Game():
     def __init__(self):
         pg.init()
-        self.screen = pg.display.set_mode(RES)
-        self.clock = pg.time.Clock()
-        self.delta_time = 1
-        self.new_game()
+        self.screen = pg.display.set_mode(RES)                          #Set Resolution
+        self.clock = pg.time.Clock()                                    #Initialize clock ingame
+        self.delta_time = 1                                             #Initialize delta time(time between frames)
+        self.new_game()                                                 #new instance of game
 
     def new_game(self):
-        self.map = Map(self)
+        self.map = Map(self)                                            #Initialize map class
 
 
     def update(self):
-        pg.display.flip()
-        self. delta_time = self.clock.tick(FPS)
-        pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
+        pg.display.flip()                                               #Update display
+        self. delta_time = self.clock.tick(FPS)                         #Set delta time to time between fps tick
+        pg.display.set_caption(f'{self.clock.get_fps() :.1f}')          #Caption game window with fps
 
     def draw(self):
-        self.screen.fill('black')
-        self.map.draw()
+        self.screen.fill('black')                                       #black screen
+        self.map.draw()                                                 #draw instance in map class
 
     def check_event(self):
-        for event in pg.event.get():
+        for event in pg.event.get():                                    #Exit game propery
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 pg.QUIT()
                 sys.exit()     
