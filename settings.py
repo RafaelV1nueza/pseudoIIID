@@ -2,6 +2,9 @@
 import math
 
 RES = WIDTH, HEIGHT = 1200, 800
+HALF_WIDTH = WIDTH // 2
+HALF_HEIGHT = HEIGHT // 2
+
 FPS = 60
 
 PLAYER_POS = 1.5, 5 #Player pos in map
@@ -14,4 +17,8 @@ HALF_FOV = FOV / 2
 NUM_RAYS = WIDTH // 2
 HALF_NUM_RAYS = NUM_RAYS // 2
 DELTA_ANGLE = FOV / NUM_RAYS
-MAX_DEPTH = 20
+MAX_DEPTH = 60 #Loaded in fov, Max = 60
+FOG = 5 #how bright are the walls distance power realation
+
+SCREEN_DIST = HALF_WIDTH / math.tan(HALF_FOV)
+SCALE = WIDTH // NUM_RAYS

@@ -21,15 +21,15 @@ class Game():
 
     def update(self):
         self.player.update()                                            #Update player angle and X,y
-        self.raycasting.update()                                        # Update raycast
+        self.raycasting.update()                                        # Update raycast  
         pg.display.flip()                                               #Update display
         self. delta_time = self.clock.tick(FPS)                         #Set delta time to time between fps tick
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')          #Caption game window with fps
 
     def draw(self):
         self.screen.fill('black')                                       #black screen
-        self.map.draw()                                                 #draw instance in map class
-        self.player.draw()                                              #draw player
+        #self.map.draw()                                                 #draw instance in map class
+        #self.player.draw()                                              #draw player
 
     def check_event(self):
         for event in pg.event.get():                                    #Exit game propery
