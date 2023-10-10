@@ -15,9 +15,10 @@ class Game():
 
     def new_game(self):
         self.map = Map(self)                                            #Initialize map class
-
+        self.player = Player(self)                                      #Initialize player class    
 
     def update(self):
+        self.player.update()                                            #Update player angle and X,y
         pg.display.flip()                                               #Update display
         self. delta_time = self.clock.tick(FPS)                         #Set delta time to time between fps tick
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')          #Caption game window with fps
@@ -25,6 +26,7 @@ class Game():
     def draw(self):
         self.screen.fill('black')                                       #black screen
         self.map.draw()                                                 #draw instance in map class
+        self.player.draw()                                              #draw player
 
     def check_event(self):
         for event in pg.event.get():                                    #Exit game propery
